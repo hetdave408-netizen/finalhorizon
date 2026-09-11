@@ -201,8 +201,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding-left:1.75rem;
 }
 .hg-ledger > *:first-child{ border-left:none; padding-left:0; }
+.hg-ledger-light > *{ border-left-color:var(--hairline); }
 @media (max-width: 767px){
   .hg-ledger > *{ flex:1 1 45%; border-left:none; border-top:1px solid var(--hairline-light); padding:1.5rem 0 0; margin-top:1.5rem; }
+  .hg-ledger-light > *{ border-top-color:var(--hairline); }
   .hg-ledger > *:nth-child(-n+2){ border-top:none; margin-top:0; padding-top:0; }
 }
 
@@ -239,17 +241,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 ::-webkit-scrollbar-track{ background:var(--ivory); }
 ::-webkit-scrollbar-thumb{ background:var(--gold); border-radius:6px; }
 
-/* ---------- Scroll progress bar ---------- */
-#scroll-progress{ position:fixed; top:0; left:0; height:3px; background:var(--gold-bright); z-index:200; width:0%; }
-
 /* ---------- Floating action buttons ----------
    The shadow lives on each rounded pill/circle below, never on this
    wrapper — a shadow on a plain rectangular flex container casts a
    rectangular smudge behind rounded children, which is exactly the
    "dead black area" artifact this used to have against light sections. */
 .fab{
-  position:fixed; right:1.5rem; z-index:90; display:flex; align-items:center; gap:.5rem;
+  position:fixed; right:1.5rem; bottom:6rem; z-index:90; display:flex; align-items:center; gap:.5rem;
 }
+.fab-stack{ flex-direction:column; align-items:flex-end; }
 .fab-shadow{
   box-shadow:0 10px 24px -8px rgba(15,26,51,.35);
 }
@@ -261,6 +261,11 @@ summary::-webkit-details-marker{ display:none; }
 
 /* ---------- Text balance ---------- */
 .balance{ text-wrap:balance; }
+
+/* Plain data tables (mandatory disclosure): a quiet hover highlight
+   for scanning a long table, not a redesign of the table itself. */
+main table tr{ transition:background-color .2s ease; }
+main table tr:hover{ background-color:rgba(200,155,60,.06); }
 
 /* ---------- Feature list ("fact sheet") ----------
    Replaces the repeated `p-7 border rounded-sm hover:border-gold` card
@@ -286,6 +291,13 @@ summary::-webkit-details-marker{ display:none; }
    unlike .hg-feature this keeps an edge, but the edge stays quiet at
    rest and only lifts into a shadow on hover, so it doesn't read as
    the same flat "SaaS card" sitting everywhere at full strength. */
+/* Buttons used as card/tile containers (photo cards, gallery tiles):
+   reset native button box behavior so they size purely from their own
+   content/CSS, the same as a div would, in every rendering engine. */
+button.hg-photo-card, button[data-gallery-item]{
+  display:block; width:100%; text-align:left; background:none; padding:0;
+  font:inherit; color:inherit; cursor:pointer; appearance:none; -webkit-appearance:none;
+}
 .hg-photo-card{
   border:1px solid var(--hairline); overflow:hidden;
   transition:transform .45s var(--ease-premium), box-shadow .45s var(--ease-premium), border-color .3s ease;

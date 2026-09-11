@@ -6,14 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Sticky nav + scroll progress ---------- */
   const nav = document.getElementById('site-nav');
-  const progress = document.getElementById('scroll-progress');
   const onScroll = () => {
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
-    if (progress) {
-      const h = document.documentElement;
-      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-      progress.style.width = pct + '%';
-    }
     const backToTop = document.getElementById('back-to-top');
     if (backToTop) backToTop.classList.toggle('opacity-0', window.scrollY < 500);
     if (backToTop) backToTop.classList.toggle('pointer-events-none', window.scrollY < 500);
