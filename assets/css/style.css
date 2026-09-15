@@ -122,10 +122,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   clip-path: path('M0,600 L0,140 C0,50 90,0 200,0 C310,0 400,50 400,140 L400,600 Z');
 }
 .gate-panel{
-  background: linear-gradient(160deg, rgba(255,253,249,0.14), rgba(255,253,249,0.02));
-  border:1px solid rgba(255,253,249,.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--navy-deep);
+  border:1px solid rgba(255,253,249,.14);
 }
 .gate-glow{
   background: radial-gradient(closest-side, rgba(224,184,88,.35), transparent 70%);
