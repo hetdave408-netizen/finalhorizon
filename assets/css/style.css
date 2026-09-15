@@ -125,6 +125,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--navy-deep);
   border:1px solid rgba(255,253,249,.14);
 }
+.gate-panel a{
+  display:block; padding:.75rem 1.25rem; font-size:.875rem; line-height:1.4;
+  color:rgba(255,253,249,.8); background:transparent;
+  transition:color .2s ease, background-color .2s ease;
+}
+.gate-panel a:hover{ color:var(--gold-bright); background:rgba(255,253,249,.05); }
 .gate-glow{
   background: radial-gradient(closest-side, rgba(224,184,88,.35), transparent 70%);
 }
